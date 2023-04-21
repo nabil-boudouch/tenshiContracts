@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract TenshiCollection is Ownable, ERC721A, PaymentSplitter {
+contract TenshiColl6 is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
@@ -27,22 +27,20 @@ contract TenshiCollection is Ownable, ERC721A, PaymentSplitter {
     Step public sellingStep;
 
     uint private constant MAX_SUPPLY = 20;
-    uint private constant MAX_WHITELIST = 7;
+    uint private constant MAX_WHITELIST = 5;
     uint private constant MAX_PUBLIC = 10;
-    uint private constant MAX_GIFT = 3;
+    uint private constant MAX_GIFT = 5;
 
     uint public wlSalePrice = 0.001 ether;
     uint public publicSalePrice = 0.002 ether;
 
     bytes32 public merkleRoot;
 
-    // uint public saleStartTime = 1674860400;
-
     mapping(address => uint) public amountNFTsperWalletWhitelistSale;
 
     uint private teamLength;
 
-    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI", "TNH")
+    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI6", "TNH6")
     PaymentSplitter(_team, _teamShares) {
         merkleRoot = _merkleRoot;
         baseURI = _baseURI;
@@ -57,11 +55,9 @@ contract TenshiCollection is Ownable, ERC721A, PaymentSplitter {
     function whitelistMint(address _account, uint _quantity, bytes32[] calldata _proof) external payable callerIsUser {
         uint price = wlSalePrice;
         require(price != 0, "Price is 0");
-        // require(currentTime() >= saleStartTime, "Whitelist Sale has not started yet");
-        // require(currentTime() < saleStartTime + 300 minutes, "Whitelist Sale is finished");
         require(sellingStep == Step.WhitelistSale, "Whitelist sale is not activated");
         require(isWhiteListed(msg.sender, _proof), "Not whitelisted");
-        require(amountNFTsperWalletWhitelistSale[msg.sender] + _quantity <= 2, "You can only get 1 NFT on the Whitelist Sale");
+        require(amountNFTsperWalletWhitelistSale[msg.sender] + _quantity <= 2, "You can only get 2 NFT on the Whitelist Sale");
         require(totalSupply() + _quantity <= MAX_WHITELIST, "Max supply exceeded");
         require(msg.value >= price * _quantity, "Not enought funds");
         amountNFTsperWalletWhitelistSale[msg.sender] += _quantity;
@@ -83,12 +79,17 @@ contract TenshiCollection is Ownable, ERC721A, PaymentSplitter {
         _safeMint(_to, _quantity);
     }
 
-    // function setSaleStartTime(uint _saleStartTime) external onlyOwner {
-    //     saleStartTime = _saleStartTime;
-    // }
-
     function setBaseUri(string memory _baseURI) external onlyOwner {
         baseURI = _baseURI;
+    }
+
+
+    function setWLSalePrice(string memory _wlSalePrice) external onlyOwner {
+        wlSalePrice = _wlSalePrice;
+    }
+
+    function setPublicSalePrice(string memory _publicSalePrice) external onlyOwner {
+        publicSalePrice = _publicSalePrice;
     }
 
     function currentTime() internal view returns(uint) {
@@ -105,7 +106,7 @@ contract TenshiCollection is Ownable, ERC721A, PaymentSplitter {
         return string(abi.encodePacked(baseURI, _tokenId.toString(), ".json"));
     }
 
-    //Whitelist
+    
     function setMerkleRoot(bytes32 _merkleRoot) external onlyOwner {
         merkleRoot = _merkleRoot;
     }
