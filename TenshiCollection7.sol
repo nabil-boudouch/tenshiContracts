@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract TenshiColl6 is Ownable, ERC721A, PaymentSplitter {
+contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
@@ -84,11 +84,11 @@ contract TenshiColl6 is Ownable, ERC721A, PaymentSplitter {
     }
 
 
-    function setWLSalePrice(string memory _wlSalePrice) external onlyOwner {
+    function setWLSalePrice(uint _wlSalePrice) external onlyOwner {
         wlSalePrice = _wlSalePrice;
     }
 
-    function setPublicSalePrice(string memory _publicSalePrice) external onlyOwner {
+    function setPublicSalePrice(uint _publicSalePrice) external onlyOwner {
         publicSalePrice = _publicSalePrice;
     }
 
@@ -105,7 +105,6 @@ contract TenshiColl6 is Ownable, ERC721A, PaymentSplitter {
 
         return string(abi.encodePacked(baseURI, _tokenId.toString(), ".json"));
     }
-
     
     function setMerkleRoot(bytes32 _merkleRoot) external onlyOwner {
         merkleRoot = _merkleRoot;
