@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
+contract TenshiColl8 is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
@@ -40,7 +40,7 @@ contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
 
     uint private teamLength;
 
-    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI7", "TNH7")
+    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI8", "TNH8")
     PaymentSplitter(_team, _teamShares) {
         merkleRoot = _merkleRoot;
         baseURI = _baseURI;
@@ -101,8 +101,8 @@ contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
 
     function tokenURI(uint _tokenId) public view virtual override returns (string memory) {
         require(_exists(_tokenId), "URI query for nonexistent token");
-
-        return string(abi.encodePacked(baseURI, _tokenId.toString(), ".json"));
+        uint tokenId = _tokenId + 1;
+        return string(abi.encodePacked(baseURI, tokenId.toString(), ".json"));
     }
     
     function setMerkleRoot(bytes32 _merkleRoot) external onlyOwner {
