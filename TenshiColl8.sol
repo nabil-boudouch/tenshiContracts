@@ -40,7 +40,7 @@ contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
 
     uint private teamLength;
 
-    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI6", "TNH6")
+    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI7", "TNH7")
     PaymentSplitter(_team, _teamShares) {
         merkleRoot = _merkleRoot;
         baseURI = _baseURI;
@@ -82,7 +82,6 @@ contract TenshiColl7 is Ownable, ERC721A, PaymentSplitter {
     function setBaseUri(string memory _baseURI) external onlyOwner {
         baseURI = _baseURI;
     }
-
 
     function setWLSalePrice(uint _wlSalePrice) external onlyOwner {
         wlSalePrice = _wlSalePrice;
