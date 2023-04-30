@@ -6,11 +6,11 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 
-contract TenshiToken8 is ERC20, ERC20Burnable, Ownable {
+contract TenshiToken9 is ERC20, ERC20Burnable, Ownable {
 
   mapping(address => bool) controllers;
   
-  constructor() ERC20("Tenshi Token8", "TNH8") { }
+  constructor() ERC20("Tenshi Token9", "TNH9") { }
 
   function mint(address to, uint256 amount) external {
     require(controllers[msg.sender], "Only controllers can mint");
