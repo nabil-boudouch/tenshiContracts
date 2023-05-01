@@ -3,12 +3,12 @@
 
 pragma solidity 0.8.4;
 
-import "https://github.com/nabil-boudouch/tenshiContracts/blob/main/TenshiToken9.sol";
+import "https://github.com/nabil-boudouch/tenshiContracts/blob/main/TenshiToken10.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 
-contract TenshiVault9 is Ownable, IERC721Receiver {
+contract TenshiVault10 is Ownable, IERC721Receiver {
 
   uint256 public totalStaked;
   
@@ -25,12 +25,12 @@ contract TenshiVault9 is Ownable, IERC721Receiver {
 
   // reference to the Block NFT contract
   ERC721Enumerable nft;
-  TenshiToken9 token;
+  TenshiToken10 token;
 
   // maps tokenId to stake
   mapping(uint256 => Stake) public vault; 
 
-   constructor(ERC721Enumerable _nft, TenshiToken9  _token) { 
+   constructor(ERC721Enumerable _nft, TenshiToken10  _token) { 
     nft = _nft;
     token = _token;
   }
