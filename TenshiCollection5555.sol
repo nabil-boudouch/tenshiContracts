@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract Tenshi5555 is Ownable, ERC721A, PaymentSplitter {
+contract TenshiCollection5555 is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
@@ -40,7 +40,7 @@ contract Tenshi5555 is Ownable, ERC721A, PaymentSplitter {
 
     uint private teamLength;
 
-    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHI5555", "TNH5555")
+    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TENSHICollection5555", "TNHCollection5555")
     PaymentSplitter(_team, _teamShares) {
         merkleRoot = _merkleRoot;
         baseURI = _baseURI;
