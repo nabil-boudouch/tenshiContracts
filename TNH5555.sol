@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract TNH555 is Ownable, ERC721A, PaymentSplitter {
+contract TNH5555 is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
