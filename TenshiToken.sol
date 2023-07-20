@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT LICENSE
 
+//@author Tenshi
+//@title TENSHI NFT
+
 pragma solidity 0.8.4;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
