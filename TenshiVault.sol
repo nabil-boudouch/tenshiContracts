@@ -26,7 +26,7 @@ contract TenshiVault is Ownable, IERC721Receiver {
   event Claimed(address owner, uint256 amount);
 
   // reference to the Block NFT contract
-  Tenshi nft;
+  TenshiNFT nft;
   TenshiToken token;
 
   // maps tokenId to stake
