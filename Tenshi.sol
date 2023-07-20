@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.12;
 
-//@author Nabil
+//@author Tenshi
 //@title TENSHI NFT
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/finance/PaymentSplitter.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "./ERC721A.sol";
 
-contract TNH5555 is Ownable, ERC721A, PaymentSplitter {
+contract Tenshi is Ownable, ERC721A, PaymentSplitter {
 
     using Strings for uint;
 
@@ -26,13 +26,13 @@ contract TNH5555 is Ownable, ERC721A, PaymentSplitter {
 
     Step public sellingStep;
 
-    uint private constant MAX_SUPPLY = 20;
-    uint private constant MAX_WHITELIST = 5;
-    uint private constant MAX_PUBLIC = 10;
-    uint private constant MAX_GIFT = 5;
+    uint private constant MAX_SUPPLY = 5555;
+    uint private constant MAX_WHITELIST = 1000;
+    uint private constant MAX_PUBLIC = 4455;
+    uint private constant MAX_GIFT = 100;
 
-    uint public wlSalePrice = 0.001 ether;
-    uint public publicSalePrice = 0.002 ether;
+    uint public wlSalePrice = 0.04 ether;
+    uint public publicSalePrice = 0.06 ether;
 
     bytes32 public merkleRoot;
 
@@ -40,7 +40,7 @@ contract TNH5555 is Ownable, ERC721A, PaymentSplitter {
 
     uint private teamLength;
 
-    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("TNH5555", "TNH5555")
+    constructor(address[] memory _team, uint[] memory _teamShares, bytes32 _merkleRoot, string memory _baseURI) ERC721A("Tenshi", "Tenshi")
     PaymentSplitter(_team, _teamShares) {
         merkleRoot = _merkleRoot;
         baseURI = _baseURI;
@@ -57,7 +57,7 @@ contract TNH5555 is Ownable, ERC721A, PaymentSplitter {
         require(price != 0, "Price is 0");
         require(sellingStep == Step.WhitelistSale, "Whitelist sale is not activated");
         require(isWhiteListed(msg.sender, _proof), "Not whitelisted");
-        require(amountNFTsperWalletWhitelistSale[msg.sender] + _quantity <= 2, "You can only get 2 NFT on the Whitelist Sale");
+        require(amountNFTsperWalletWhitelistSale[msg.sender] + _quantity <= 2, "You can only get 2 NFTs on the Whitelist Sale");
         require(totalSupply() + _quantity <= MAX_WHITELIST, "Max supply exceeded");
         require(msg.value >= price * _quantity, "Not enought funds");
         amountNFTsperWalletWhitelistSale[msg.sender] += _quantity;

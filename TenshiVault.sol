@@ -3,12 +3,12 @@
 
 pragma solidity 0.8.4;
 
-import "https://github.com/nabil-boudouch/tenshiContracts/blob/main/TNHTok6666.sol";
+import "https://github.com/nabil-boudouch/tenshiContracts/blob/main/TenshiToken.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 
-contract TNHStaking5555 is Ownable, IERC721Receiver {
+contract TenshiVault is Ownable, IERC721Receiver {
 
   uint256 public totalStaked;
   
@@ -24,13 +24,13 @@ contract TNHStaking5555 is Ownable, IERC721Receiver {
   event Claimed(address owner, uint256 amount);
 
   // reference to the Block NFT contract
-  ERC721Enumerable nft;
-  TNHTok5555 token;
+  Tenshi nft;
+  TenshiToken token;
 
   // maps tokenId to stake
   mapping(uint256 => Stake) public vault; 
 
-   constructor(ERC721Enumerable _nft, TNHTok5555  _token) { 
+   constructor(ERC721Enumerable _nft, TenshiToken  _token) { 
     nft = _nft;
     token = _token;
   }
