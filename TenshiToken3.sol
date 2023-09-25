@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 
-contract TenshiToken2 is ERC20, ERC20Burnable, Ownable {
+contract TenshiToken3 is ERC20, ERC20Burnable, Ownable {
 
   mapping(address => bool) controllers;
   
